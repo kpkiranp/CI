@@ -27,7 +27,7 @@ pipeline{
 						sh '''
                             cd 
                             git clone https://github.com/kpkiranp/CD.git
-                            cp -r HPA_task/manifests ~/CD
+                            cp -r CI/manifests ~/CD
                             cd CD
                             git add .
                             git commit -m "manifests updated with ${DOCKER_TAG}" 
