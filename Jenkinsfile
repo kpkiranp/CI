@@ -13,9 +13,9 @@ pipeline{
             steps{
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerPwd', usernameVariable: 'dockerUsr')]) {
                     sh '''
-                        docker build . -t ${dockerUsr}/ip-app:${DOCKER_TAG} 
+                        docker build . -t ${dockerUsr}/tomcat:${DOCKER_TAG} 
                         docker login -u ${dockerUsr} -p ${dockerPwd}
-                        docker push ${dockerUsr}/ip-app:${DOCKER_TAG}
+                        docker push ${dockerUsr}/tomcat:${DOCKER_TAG}
                     '''
                 }
             }
