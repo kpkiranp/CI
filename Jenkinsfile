@@ -42,6 +42,8 @@ pipeline{
                             git clone https://github.com/kpkiranp/CD.git 
                             fi                          
                             cp -r /var/lib/jenkins/workspace/HPA_task/manifests /var/lib/jenkins/CD
+                            git config user.email "kpkiran420@gmail.com"
+                            git config user.name "kpkiranp"
                             git add .
                             git commit -m "manifests updated with ${DOCKER_TAG}" 
                             git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} 
