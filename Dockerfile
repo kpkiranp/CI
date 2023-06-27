@@ -5,5 +5,5 @@ RUN mvn clean package
 CMD [ "/bin/bash" ]
 
 FROM tomcat AS deployment
-COPY --from=build /HPA_task/target/*.war /usr/local/tomcat/webapps/
+COPY --from=build /CI/target/*.war /usr/local/tomcat/webapps/
 CMD [ "catalina.sh", "run" ]
