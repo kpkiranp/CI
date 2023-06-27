@@ -44,7 +44,7 @@ pipeline{
                             cp -r /var/lib/jenkins/workspace/HPA_task/manifests /var/lib/jenkins/CD
                             git add .
                             git commit -m "manifests updated with ${DOCKER_TAG}" 
-                            git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main 
+                            git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} 
                         '''
 					}
 				}
