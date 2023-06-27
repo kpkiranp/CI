@@ -21,7 +21,12 @@ pipeline{
             }
         }
         stage('PushManifestsToCDRepository'){
+             environment {
+            GIT_REPO_NAME = "CD"
+            GIT_USER_NAME = "kpkiranp"
+        }
             steps{
+                withCredentials([string(credentialsId: 'githubcd', variable: 'GITHUB_TOKEN')]) {
                    sh "chmod +x changetag.sh"
                    sh "./changetag.sh ${DOCKER_TAG}"
 						sh '''
@@ -38,7 +43,7 @@ pipeline{
                             cp -r /var/lib/jenkins/workspace/HPA_task/manifests /var/lib/jenkins/CD
                             git add .
                             git commit -m "manifests updated with ${DOCKER_TAG}" 
-                            git push origin
+                            git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                         '''
 					}
 				}
