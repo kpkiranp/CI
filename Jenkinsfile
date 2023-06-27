@@ -27,7 +27,7 @@ pipeline{
         }
             steps{
                 
-                withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'gitPwd', usernameVariable: 'gitusr')]) {
+                withCredentials([string(credentialsId: 'sshgithub', keyFileVariable: 'key', usernameVariable: 'gitusr')]) {
                    sh "chmod +x changetag.sh"
                    sh "./changetag.sh ${DOCKER_TAG}"
 						sh '''
@@ -44,7 +44,7 @@ pipeline{
                             cp -r /var/lib/jenkins/workspace/HPA_task/manifests /var/lib/jenkins/CD
                             git add .
                             git commit -m "manifests updated with ${DOCKER_TAG}" 
-                            git push https://${gitpwd}@github.com/${gitusr}/${GIT_REPO_NAME} HEAD:main
+                            git push 
                         '''
 					}
 				}
