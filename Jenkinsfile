@@ -26,7 +26,7 @@ pipeline{
             GIT_USER_NAME = "kpkiranp"
         }
             steps{
-                withCredentials([string(credentialsId: 'githubcd', variable: 'GITHUB_TOKEN')]) {
+                withCredentials([string(credentialsId: 'cdgithub', variable: 'GITHUB_TOKEN')]) {
                    sh "chmod +x changetag.sh"
                    sh "./changetag.sh ${DOCKER_TAG}"
 						sh '''
