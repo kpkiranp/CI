@@ -1,6 +1,6 @@
 FROM maven:3.8.6-openjdk-11 AS build
 RUN git clone https://github.com/kpkiranp/CI.git
-WORKDIR /HPA_task
+WORKDIR /CI
 RUN mvn clean package
 CMD [ "/bin/bash" ]
 
