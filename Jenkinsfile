@@ -28,10 +28,13 @@ pipeline{
                             pwd
                             cd
                             pwd 
-                            git clone https://github.com/kpkiranp/CD.git
-                            if ((&? != 0))
-                            cd CD
-                            git pull 
+                            if [ -d /var/lib/jenkins/CD ];
+                            then
+                            cd /var/lib/jenkins/CD
+                            git pull
+                            else
+                            git clone https://github.com/kpkiranp/CD.git 
+                            fi                          
                             cp -r /var/lib/jenkins/workspace/HPA_task/manifests /var/lib/jenkins/CD
                             git add .
                             git commit -m "manifests updated with ${DOCKER_TAG}" 
