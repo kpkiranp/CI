@@ -25,7 +25,9 @@ pipeline{
                    sh "chmod +x changetag.sh"
                    sh "./changetag.sh ${DOCKER_TAG}"
 						sh '''
-                            cd 
+                            pwd
+                            cd
+                            pwd 
                             git clone https://github.com/kpkiranp/CD.git
                             cp -r CI/manifests ~/CD
                             cd CD
