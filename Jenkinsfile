@@ -22,8 +22,8 @@ pipeline{
         }
         stage('PushManifestsToCDRepository'){
             steps{
-                   sh "chmod +x change_tag.sh"
-                   sh "./change_tag.sh ${DOCKER_TAG}"
+                   sh "chmod +x changetag.sh"
+                   sh "./changetag.sh ${DOCKER_TAG}"
 						sh '''
                             cd 
                             git clone https://github.com/kpkiranp/CD.git
