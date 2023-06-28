@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busybox-test
+  template:
+    metadata:
+      labels:
+        app: busybox-test
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command:
+          - /bin/sh
+          - -c
+          - "while true; do wget -q -O- http://HelloWorld-service; done"   
