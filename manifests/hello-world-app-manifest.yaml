@@ -5,6 +5,7 @@ metadata:
      labels: 
         app: webapp 
 spec:
+     replicas: 1
      selector:
         matchLabels:
            app: webapp
@@ -15,9 +16,14 @@ spec:
         spec:
            containers:
             - name: tomcat
-              image: kiran5108/tomcat:tag-version
+              image: kiran5108/tomcat
               ports:
-              - containerPort: 8080                 
+              - containerPort: 8080
+              resources:
+                limits:
+                  cpu: 500m
+                requests:
+                  cpu: 200m
 ---
 apiVersion: v1
 kind: Service
@@ -33,9 +39,8 @@ spec:
       port: 80
       targetPort: 8080
       nodePort: 31080
-
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: webapphpa
@@ -50,5 +55,6 @@ spec:
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: 50   
-
+        target:
+          type: Utilization
+          averageUtilization: 50   
