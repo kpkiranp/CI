@@ -1,4 +1,4 @@
-Hello World! (WAR-style)
-===============
+simple-web-app
+==============
 
-This is the simplest possible Java webapp for testing servlet container deployments.  It should work on any container and requires no other dependencies or configuration.
+Simple web application that demonstrates the use of the OpenID Connect client code and configuration

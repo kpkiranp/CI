@@ -1,5 +1,18 @@
-/bin
+/local-values.conf
 /target
-.classpath
-.project
-.settings
+*~
+/bin
+*.idea
+
+*.iml
+*.eml
+/.classpath
+/.settings
+/.project
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
